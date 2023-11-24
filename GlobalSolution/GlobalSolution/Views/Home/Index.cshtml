@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "SafeBeat - Monitor de Saúde";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <imagem-redonda caminho="./safebeat-logo.png"></imagem-redonda>
+            <h1 class="display-4 mt-3">SafeBeat</h1>
+            <p class="lead">Monitor de Saúde e Alerta de Infarto</p>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <h2>Sobre</h2>
+                    <p>
+                        SafeBeat é um sistema inovador de monitoramento de saúde. Ao adquirir a pulseira SafeBeat, os usuários
+                        podem cadastrar suas informações vitais e vincular a pulseira à sua conta.
+                        O sistema atende tanto a usuários independentes quanto a instituições como asilos, permitindo monitoramento
+                        remoto e notificações em caso de sinais de infarto.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <h2>Grupo</h2>
+                    <p>
+                        O SafeBeat foi desenvolvido pelo Adilson Roberto Cavicchioli Junior, Fernando Cheng Gong e Gustavo Marquez Ribeiro.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2>O que Foi Implementado</h2>
+            <p>
+                Esse projeto foi especialmente desenvolvido para a disciplina Enterprise Application Development, então ele se atenta a cumprir os requisitos propostos por ela.
+            </p>
+            <h5>Na página inicial, descrever as funcionalidades implementadas e o motivo que contribuem na solução do problema proposto:</h5>
+            <p>
+                Bem, não é preciso dizer sobre essa parte :)
+            </p>
+            <h5>Implementar pelo menos 6 entidades relacionadas:</h5>
+            <p>
+                Do nosso protótipo de modelo inicial, implementamos 7 entidades, conforme diagrama a seguir.
+            </p>
+            <img src="~/diagrama.png" alt="Diagrama de classes" class="img-fluid" style="max-width: 600px; margin-bottom: 20px;" />
+            <h5>Criar TagHelper:</h5>
+            <p>
+                Acabamos não precisando criar TagHelpers personalizados, mas para demonstrar, criei um para a logo nessa página! O caminho é <kbd><kbd>GlobalSolution.Views.Shared.TagHelpers.ImagemRedondaTagHelper</kbd></kbd>.
+            </p>
+            <h5>Desenvolver pelo menos dois CRUD completos com as entidades relacionadas:</h5>
+            <p>
+                Durante o desenvolvimento, havia feito o CRUD simplório com todas as entidades, porém desconsiderava os relacionamentos na hora de criá-los. Por exemplo, não listava os pacientes no formulário de criação de um contato de emergência, obrigando o usuário a preencher o id de tal
+            </p>
+            <p>
+                Por fim, decidi remover os CRUDs das entidades de <strong>Instituicao, Moderador e DadosIot.</strong> Então atualmente temos o CRUD completo das entidades <strong>Usuario, Paciente, Monitor e ContatoEmergencia.</strong>
+            </p> 
+            <p>
+                Importante saber: O create das entidades <strong>Paciente e Monitor</strong> não são liberados em tela pois são entidades completamente dependentes de usuário. Então é necessário partir da criação de um usuário novo para finalizar com a criação delas.
+            </p>
+            <h5>Implementar o cadastro e a listagem de pelo menos 1 tipo de cada relacionamento (1:1, 1:N e N:M):</h5>
+            <p>
+                Possuímos o CRUD completo de:
+                <li>Dois relacionamentos <strong>1:1</strong>: as entidades <strong>Paciente ➝ Usuario</strong> e <strong>Monitor ➝ Usuario</strong>;</li>
+                <li>Um relacionamento <strong>1:N</strong>: as entidades <strong>ContatoEmergencia ➝ Paciente</strong>;</li>
+                <li>Um relacionamento <strong>N:M</strong>: as entidades <strong>Monitor ➝ Paciente</strong>;</li>
+            </p>
+            <h5>Implementar 2 funcionalidades além do CRUD (pesquisa, alteração de status, dashboard etc.):</h5>
+            <p>
+                Ainda não implementado.
+            </p>
+            <h5>Apresentar as mensagens de feedback para o usuário:</h5>
+            <p>
+                Afim de reutilizar o que já existe, deixamos as mensagens padrões do framework apesar de termos especificado os padrões das informações usando as anotações.
+            </p>
+        </div>
+    </div>
+</div>

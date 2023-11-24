@@ -1,0 +1,111 @@
+﻿@model GlobalSolution.Entity.Paciente
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Paciente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="UsuarioId" type="hidden" value="@ViewBag.UsuarioId"/>
+                <label class="control-label">Email</label>
+                <input class="form-control" readonly value="@ViewBag.UsuarioEmail" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Idade" class="control-label"></label>
+                <input asp-for="Idade" class="form-control" />
+                <span asp-validation-for="Idade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SexoBiologico" class="control-label"></label>
+                <select asp-for="SexoBiologico" class="form-control">
+                    <option value="feminino">Feminino</option>
+                    <option value="masculino">Masculino</option>
+                </select>
+                <span asp-validation-for="SexoBiologico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero" class="control-label"></label>
+                <select asp-for="Genero" class="form-control">
+                    <option value="feminino">Feminino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="outro">Outro</option>
+                </select>
+                <span asp-validation-for="Genero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colesterol" class="control-label">Colesterol (mg/dL)</label>
+                <input asp-for="Colesterol" class="form-control" placeholder="Exemplo: 200"/>
+                <span asp-validation-for="Colesterol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Triglicerol" class="control-label">Triglicerol (mg/dL)</label>
+                <input asp-for="Triglicerol" class="form-control" placeholder="Exemplo: 200"/>
+                <span asp-validation-for="Triglicerol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diabete" class="control-label">Diabete (glicemia em mg/dL)</label>
+                <input asp-for="Diabete" class="form-control" placeholder="Exemplo: 200" />
+                <span asp-validation-for="Diabete" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Fumante" /> @Html.DisplayNameFor(model => model.Fumante)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Obeso" /> @Html.DisplayNameFor(model => model.Obeso)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ConsumoAlcool" /> Consumo de álcool
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dieta" class="control-label"></label>
+                <select asp-for="Dieta" class="form-control">
+                    <option value="Não Posso Dizer">Não Posso Dizer</option>
+                    <option value="Muito Saudável">Muito Saudável</option>
+                    <option value="Saudável">Saudável</option>
+                    <option value="Moderada">Moderada</option>
+                    <option value="Necessita Melhorar">Necessita Melhorar</option>
+                    <option value="Pouco Saudável">Pouco Saudável</option>
+                    <option value="Muito Pouco Saudável">Muito Pouco Saudável</option>
+                    <option value="Dieta Desequilibrada">Dieta Desequilibrada</option>
+                </select>
+                <span asp-validation-for="Dieta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsoMedicamentos" class="control-label">Eu uso medicamentos...</label>
+                <select asp-for="UsoMedicamentos" class="form-control">
+                    <option value="De vez em quando">De vez em quando</option>
+                    <option value="Controlado">Controlado</option>
+                    <option value="Regularmente">Regularmente</option>
+                    <option value="Emergencial">Emergencial</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <span asp-validation-for="UsoMedicamentos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mt-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
