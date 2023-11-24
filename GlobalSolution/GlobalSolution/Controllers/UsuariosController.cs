@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GlobalSolution.Data;
 using GlobalSolution.Entity;
+using GlobalSolution.Models;
 
 namespace GlobalSolution.Controllers
 {
@@ -22,10 +23,29 @@ namespace GlobalSolution.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-              return _context.Usuario != null ? 
-                          View(await _context.Usuario.ToListAsync()) :
-                          Problem("Entity set 'GlobalSolutionContext.Usuario'  is null.");
+            return _context.Usuario != null ?
+                        View(await _context.Usuario.ToListAsync()) :
+                        Problem("Entity set 'GlobalSolutionContext.Usuario'  is null.");
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(Credencial credencial)
+        {
+            IQueryable<Usuario> encontrado = _context.Usuario.Where(u => u.Email.Equals(credencial.Email) && u.Senha.Equals(credencial.Senha));
+            if (encontrado.Count() > 0)
+            {
+                ViewBag.Mensagem = "Login efetuado com sucesso!";
+                return View();
+            }
+            ViewBag.Mensagem = "Credenciais incorretas";
+            return View(credencial);
+        }
+
 
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(long? id)

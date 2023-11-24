@@ -22,10 +22,14 @@ namespace GlobalSolution.Controllers
         }
 
         // GET: Pacientes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string query)
         {
-            var globalSolutionContext = _context.Paciente.Include(p => p.Usuario);
-            return View(await globalSolutionContext.ToListAsync());
+            if(string.IsNullOrWhiteSpace(query))
+            {
+                var globalSolutionContext = _context.Paciente.Include(p => p.Usuario);
+                return View(await globalSolutionContext.ToListAsync());
+            }
+            return View(_context.Paciente.Where(p => p.Usuario.Nome.Contains(query) || p.Usuario.Email.Contains(query)));
         }
 
         // GET: Pacientes/Details/5
